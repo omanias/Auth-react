@@ -11,7 +11,7 @@ const Home = () => {
       .then(() => {
         // Sign-out successful.
         navigate("/login");
-        console.log("Signed out successfully");
+        alert("Signed out successfully");
       })
       .catch((error) => {
         // An error happened.

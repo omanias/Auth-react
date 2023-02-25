@@ -7,6 +7,7 @@ const Login = () => {
   const navigate = useNavigate();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [error, setError] = useState("");
 
   const onLogin = (e) => {
     e.preventDefault();
@@ -15,12 +16,11 @@ const Login = () => {
         // Signed in
         const user = userCredential.user;
         navigate("/");
-        console.log(user);
+        alert(user.email + " is logged in");
       })
       .catch((error) => {
-        const errorCode = error.code;
+        const errorCode = setError("Email or password is incorrect");
         const errorMessage = error.message;
-        console.log(errorCode, errorMessage);
       });
   };
 
@@ -60,7 +60,7 @@ const Login = () => {
                 <button onClick={onLogin}>Login</button>
               </div>
             </form>
-
+            {error}
             <p className="text-sm text-white text-center">
               No account yet? <NavLink to="/signup">Sign up</NavLink>
             </p>
